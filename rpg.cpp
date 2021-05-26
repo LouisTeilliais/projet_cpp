@@ -13,6 +13,46 @@ enum Job {
     MonsterJob,
 };
 
+class EmptyPotion : public std::exception {
+    public:
+    virtual const char* what() const throw() {
+        return "Trying to drink an empty potion!";
+    }
+};
+
+// class IllegalFury : public std::exception {
+//     bool entering;
+//     public:
+//     virtual const char* what() const throw() {
+//         if(entering){
+//             return "Cannot enter fury twice !";
+//         }
+//         else {
+//             return "Cannot leave fury if not in fury !";
+//         }
+//     }
+//     public:
+//     IllegalFury(bool entering) : entering(entering) {}
+// }; 
+
+class Potion {
+    int remainingCharges;
+    int hpPerCharge;
+
+    public :
+    Potion(int remainingCharges,int hpPerCharge) : remainingCharges(remainingCharges), hpPerCharge(hpPerCharge) {}
+    int getHealedHp(){
+        if(remainingCharges <= 0){
+            throw EmptyPotion();
+        }
+        remainingCharges -= 1;
+        return hpPerCharge;
+    }
+    bool operator<(const Potion& p) {
+        return this->remainingCharges*this->hpPerCharge < p.remainingCharges* p.hpPerCharge;
+    }
+};
+
 class Character
 {
 
@@ -32,7 +72,7 @@ class Character
     static vector<Character*> registeredPlayers;
 
     public:
-    Character() : Character("John Doe", BarbarianJob,100,100,50,1000){}
+    Character() : Character("John Doe",FreelancerJob,100,100,50,1000){}
 
     Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp){
         this->name = name;
@@ -55,14 +95,14 @@ class Character
         }
     }
 
-    // void drink(Potion& p){
-    //     this->heal(p.getHealedHp());
-    // }
+    void drink(Potion& p){
+        this->heal(p.getHealedHp());
+    }
 
-    // Character& operator+=(Potion& p){
-    //     this->drink(p);
-    //     return *this;
-    // }
+    Character& operator+=(Potion& p){
+        this->drink(p);
+        return *this;
+    }
 
     void attack(Character& defender) {
         int damage = this->physicalAttack - defender.defense;
@@ -109,25 +149,25 @@ class Barbarian : public Character {
         baseDefense = this->defense;
         inFury = false;
     }
-    // void enterFury(){
-    //     if( inFury ){
-    //         throw IllegalFury(true);
-    //     }
-    //     baseAttack = this->physicalAttack;
-    //     baseDefense = this->defense;
-    //     inFury = true;
-    //     physicalAttack *= 1.5f;
-    //     defense = 0;
-    //     this->receiveDamage(maxHp*0.15f);
-    // }
-    // void leaveFury(){
-    //     if(!inFury){
-    //         throw IllegalFury(false);
-    //     }
-    //     physicalAttack = baseAttack;
-    //     defense = baseDefense;
-    //     inFury = false;
-    // }
+    void enterFury(){
+        if( inFury ){
+            throw IllegalFury(true);
+        }
+        baseAttack = this->physicalAttack;
+        baseDefense = this->defense;
+        inFury = true;
+        physicalAttack *= 1.5f;
+        defense = 0;
+        this->receiveDamage(maxHp*0.15f);
+    }
+    void leaveFury(){
+        if(!inFury){
+            throw IllegalFury(false);
+        }
+        physicalAttack = baseAttack;
+        defense = baseDefense;
+        inFury = false;
+    }
 };
 
 class Mage : public Character {
@@ -155,12 +195,44 @@ class Mage : public Character {
     }
 };
 
-class Priest : public Character {
+vector<Character*> Character::registeredPlayers;
 
-};
 
 int main(int argc, char const *argv[])
 {
+    try {
+        srand(time(NULL));
+        Mage gandalf("Gandalf");
+        Barbarian conan("Conan");
+        conan.enterFury();
+        conan.attack(gandalf);
+        cout << "La partie commence avec " << Character::getRegisteredNumber() << " joueurs" << endl;
+
+        conan.attack(gandalf);
+        cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
+        conan.enterFury();
+
+        Potion small(3,100);
     
+        gandalf += small;
+        gandalf += small;
+        gandalf += small;
+        gandalf += small;
+        cout << "All potions were drunk !" << endl;
+    }
+    catch(IllegalFury& illegalF){
+        cout << "An illegal barbarian fury operation occured : " << illegalF.what() << endl;
+    }
+    catch(EmptyPotion& ep){
+        cout << "An illegal barbarian fury operation occured : " << ep.what() << endl;
+    }
+    catch(std::exception& e){
+        cout << "An exception occured : " << e.what() << endl;
+    }
+
+    cout << "End of combat" << endl;
+
+
+
     return 0;
 }

@@ -156,7 +156,20 @@ class Mage : public Character {
 };
 
 class Priest : public Character {
-
+    private :
+    int magicPoint;
+    int maxMagicPoint;
+    bool tryUsingMp(int magicPoint){
+        if(this-> magicPoint < magicPoint){
+            return false;
+        }
+        this->magicPoint -= magicPoint;
+    }
+    public :
+    Priest(string name) : Character(name, Job::PriestJob, 25,200,30,1000), magicPoint(100), maxMagicPoint(150){}
+    void magicHeal(){
+      
+    }
 };
 
 int main(int argc, char const *argv[])

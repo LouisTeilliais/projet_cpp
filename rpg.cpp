@@ -109,25 +109,25 @@ class Barbarian : public Character {
         baseDefense = this->defense;
         inFury = false;
     }
-    void enterFury(){
-        if( inFury ){
-            throw IllegalFury(true);
-        }
-        baseAttack = this->physicalAttack;
-        baseDefense = this->defense;
-        inFury = true;
-        physicalAttack *= 1.5f;
-        defense = 0;
-        this->receiveDamage(maxHp*0.15f);
-    }
-    void leaveFury(){
-        if(!inFury){
-            throw IllegalFury(false);
-        }
-        physicalAttack = baseAttack;
-        defense = baseDefense;
-        inFury = false;
-    }
+    // void enterFury(){
+    //     if( inFury ){
+    //         throw IllegalFury(true);
+    //     }
+    //     baseAttack = this->physicalAttack;
+    //     baseDefense = this->defense;
+    //     inFury = true;
+    //     physicalAttack *= 1.5f;
+    //     defense = 0;
+    //     this->receiveDamage(maxHp*0.15f);
+    // }
+    // void leaveFury(){
+    //     if(!inFury){
+    //         throw IllegalFury(false);
+    //     }
+    //     physicalAttack = baseAttack;
+    //     defense = baseDefense;
+    //     inFury = false;
+    // }
 };
 
 class Mage : public Character {
@@ -154,3 +154,13 @@ class Mage : public Character {
         other.receiveDamage(this->magicAttack);
     }
 };
+
+class Priest : public Character {
+
+};
+
+int main(int argc, char const *argv[])
+{
+    
+    return 0;
+}

@@ -1,5 +1,19 @@
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
+#include "./potion.hpp"
+#include <string>
+
+using namespace std;
+
+enum Job {
+    FreelancerJob,
+    MageJob,
+    WarriorJob,
+    BarbarianJob,
+    DruidJob,
+    PriestJob,
+    PaladinJob,
+};
 
 class Character
 {
@@ -17,47 +31,24 @@ class Character
 
     private:
     Job job;
-    static vector<Character*> registeredPlayers;
 
     public:
     Character() : Character("John Doe",FreelancerJob,100,100,50,1000){}
 
     Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp);
 
-
     void heal(unsigned int healingValue);
 
-    void drink(Potion& p);}
+    void drink(Potion& p);
 
-    Character& operator+=(Potion& p){
-        this->drink(p);
-        return *this;
-    }
+    Character& operator+=(Potion& p);
 
     void attack(Character& defender);
 
     int getCurrentHp();
 
-    static int getRegisteredNumber(){
-        return Character::registeredPlayers.size();
-    }
-
     public:
-    void receiveDamage(int damage){
-        if(damage < 0) {
-            damage = 0;
-        }
-        if(this->hp - damage < 0){
-            this->hp = 0;
-        }
-        else {
-            this->hp -= damage;
-        }
-    }
-
-    private:
-    void registerPlayer(){
-        Character::registeredPlayers.push_back(this);
-    }
-
+    void receiveDamage(int damage);
 };
+
+#endif

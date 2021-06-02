@@ -1,12 +1,11 @@
 #include "./Mage.hpp"
 
-using namespace std;
-
 bool Mage::tryUsingMp(int mp){
     if(this->mp < mp){
         return false;
     }
     this->mp -= mp;
+    return true;
 }
 
 void Mage::fireball(Character& other){

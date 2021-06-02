@@ -20,20 +20,20 @@ class EmptyPotion : public std::exception {
     }
 };
 
-// class IllegalFury : public std::exception {
-//     bool entering;
-//     public:
-//     virtual const char* what() const throw() {
-//         if(entering){
-//             return "Cannot enter fury twice !";
-//         }
-//         else {
-//             return "Cannot leave fury if not in fury !";
-//         }
-//     }
-//     public:
-//     IllegalFury(bool entering) : entering(entering) {}
-// }; 
+class IllegalFury : public std::exception {
+    bool entering;
+    public:
+    virtual const char* what() const throw() {
+        if(entering){
+            return "Cannot enter fury twice !";
+        }
+        else {
+            return "Cannot leave fury if not in fury !";
+        }
+    }
+    public:
+    IllegalFury(bool entering) : entering(entering) {}
+}; 
 
 class Potion {
     int remainingCharges;
@@ -72,7 +72,7 @@ class Character
     static vector<Character*> registeredPlayers;
 
     public:
-    Character() : Character("John Doe",FreelancerJob,100,100,50,1000){}
+    Character() : Character("John Doe",BarbarianJob,100,100,50,1000){}
 
     Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp){
         this->name = name;
@@ -127,6 +127,17 @@ class Character
         }
         else {
             this->hp -= damage;
+        }
+    }
+    void receiveHeal(int heal){
+        if(heal < 0) {
+            heal = 0;
+        }
+        if(this->hp + heal < 0){
+            this->hp = 0;
+        }
+        else {
+            this->hp += heal;
         }
     }
 
@@ -195,7 +206,6 @@ class Mage : public Character {
     }
 };
 
-<<<<<<< HEAD
 class Priest : public Character {
     private :
     int magicPoint;
@@ -208,14 +218,29 @@ class Priest : public Character {
     }
     public :
     Priest(string name) : Character(name, Job::PriestJob, 25,200,30,1000), magicPoint(100), maxMagicPoint(150){}
-    void magicHeal(){
-      
+    void magicHeal(Character& other){
+      if(!tryUsingMp(this->maxMagicPoint*0.10f)){
+        return;
     }
-};
-=======
-vector<Character*> Character::registeredPlayers;
+    int randomHeal = rand() % 2*magicAttack + magicAttack ;
+    cout << randomHeal << endl;
 
->>>>>>> e074254994474c88c8cbaaada690f84966f25fd9
+    other.receiveHeal(this->magicAttack);
+};
+
+// class Monster : public Character {
+//     private:
+    
+//     public:
+//     Monster(string name) : Character(name, Job::MonsterJob, 50,0,15,1500){};
+//     void GroupAttack(){
+        
+//     };
+//     void DefenseGroup(){
+
+//     };
+// };
+
 
 int main(int argc, char const *argv[])
 {
@@ -254,4 +279,6 @@ int main(int argc, char const *argv[])
 
 
     return 0;
+
 }
+};

@@ -7,10 +7,13 @@
 using namespace std;
 
 enum Job {
-    BarbarianJob,
+    FreelancerJob,
     MageJob,
+    WarriorJob,
+    BarbarianJob,
+    DruidJob,
     PriestJob,
-    MonsterJob,
+    PaladinJob,
 };
 
 class EmptyPotion : public std::exception {
@@ -20,20 +23,20 @@ class EmptyPotion : public std::exception {
     }
 };
 
-// class IllegalFury : public std::exception {
-//     bool entering;
-//     public:
-//     virtual const char* what() const throw() {
-//         if(entering){
-//             return "Cannot enter fury twice !";
-//         }
-//         else {
-//             return "Cannot leave fury if not in fury !";
-//         }
-//     }
-//     public:
-//     IllegalFury(bool entering) : entering(entering) {}
-// }; 
+class IllegalFury : public std::exception {
+    bool entering;
+    public:
+    virtual const char* what() const throw() {
+        if(entering){
+            return "Cannot enter fury twice !";
+        }
+        else {
+            return "Cannot leave fury if not in fury !";
+        }
+    }
+    public:
+    IllegalFury(bool entering) : entering(entering) {}
+}; 
 
 class Potion {
     int remainingCharges;

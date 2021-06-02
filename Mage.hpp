@@ -17,5 +17,4 @@ class Mage : public Character {
     void fireball(Character& other);
 };
 
-
 #endif

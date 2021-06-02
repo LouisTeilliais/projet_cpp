@@ -1,10 +1,10 @@
 #ifndef BARBARIAN_HPP
 #define BARBARIAN_HPP
-#include "./Character.hpp"
+#include "./character.hpp"
 #include <string>
+#include "./exception.hpp"
 
 using namespace std;
-
 
 class Barbarian : public Character {
     private:
@@ -14,9 +14,9 @@ class Barbarian : public Character {
 
     public:
     Barbarian(string name);
-
     void enterFury();
     void leaveFury();
 };
+
 
 #endif

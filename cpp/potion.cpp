@@ -1,4 +1,4 @@
-#include "./hpp/potion.hpp"
+#include "../hpp/potion.hpp"
 
 
 int Potion::getHealedHp(){

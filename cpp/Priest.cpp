@@ -1,5 +1,5 @@
-#include "./Priest.hpp"
-#include "./character.hpp"
+#include "../hpp/Priest.hpp"
+#include "../hpp/character.hpp"
 #include <iostream>
 
 using namespace std;
@@ -9,6 +9,7 @@ bool Priest:: tryUsingMp(int magicPoint){
         return false;
     }
     this->magicPoint -= magicPoint;
+    return true;
 }
 
 void Priest::magicHeal(Character& other){
@@ -18,7 +19,7 @@ void Priest::magicHeal(Character& other){
     }
 
     int randomHeal = rand() % magicAttack + magicAttack ;
-    cout << randomHeal << endl;
-
+    
+    
     other.receiveHeal(this->magicAttack);
 }

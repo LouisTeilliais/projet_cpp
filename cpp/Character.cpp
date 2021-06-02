@@ -1,4 +1,4 @@
-#include "./hpp/character.hpp"
+#include "../hpp/character.hpp"
 
 Character::Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp){
     this->name = name;

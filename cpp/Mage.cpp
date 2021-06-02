@@ -1,4 +1,4 @@
-#include "./hpp/Mage.hpp"
+#include "../hpp/Mage.hpp"
 
 bool Mage::tryUsingMp(int mp){
     if(this->mp < mp){

@@ -6,13 +6,10 @@
 using namespace std;
 
 enum Job {
-    FreelancerJob,
+    MonsterJob,
     MageJob,
-    WarriorJob,
     BarbarianJob,
-    DruidJob,
     PriestJob,
-    PaladinJob,
 };
 
 class Character
@@ -33,7 +30,7 @@ class Character
     Job job;
 
     public:
-    Character() : Character("John Doe",FreelancerJob,100,100,50,1000){}
+    Character() : Character("John Doe",MageJob,100,100,50,1000){}
 
     Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp);
 

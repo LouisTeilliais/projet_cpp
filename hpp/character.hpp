@@ -46,6 +46,7 @@ class Character
 
     public:
     void receiveDamage(int damage);
+    void receiveHeal(int heal);
 };
 
 #endif

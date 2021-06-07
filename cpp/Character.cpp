@@ -1,4 +1,4 @@
-#include "./character.hpp"
+#include "../hpp/character.hpp"
 
 Character::Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp){
     this->name = name;
@@ -47,5 +47,17 @@ void Character::receiveDamage(int damage){
     }
     else {
         this->hp -= damage;
+    }
+}
+
+void Character::receiveHeal(int heal){
+    if(heal < 0) {
+        heal = 0;
+    }
+    if(this->hp + heal < 0){
+        this->hp = 0;
+    }
+    else {
+        this->hp += heal;
     }
 }

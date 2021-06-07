@@ -1,11 +1,12 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
-#include "./character.hpp"
-#include "./Barbarian.hpp"
-#include "./Mage.hpp"
-#include "./potion.hpp"
-#include "./exception.hpp"
+#include "../hpp/character.hpp"
+#include "../hpp/Barbarian.hpp"
+#include "../hpp/Mage.hpp"
+#include "../hpp/potion.hpp"
+#include "../hpp/exception.hpp"
+#include "../hpp/Priest.hpp"
 
 
 using namespace std;

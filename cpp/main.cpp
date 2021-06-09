@@ -1,20 +1,24 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <string>
 #include "../hpp/character.hpp"
 #include "../hpp/Barbarian.hpp"
 #include "../hpp/Mage.hpp"
 #include "../hpp/potion.hpp"
 #include "../hpp/exception.hpp"
 #include "../hpp/Priest.hpp"
+#include "../hpp/Start.hpp"
 
 
 using namespace std;
 
-int main(int argc, char const *argv[]){
+int main(){
 
     srand(time(NULL));
+    // start PersoName();
     string endLine1 = string("\e[1A\e[K");
+    cout << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << "Bienvenue dans ce RPG ! Tout d'abord, nous allons vous demander le nom de vos personnages." << endl;
     string MageName;
     string BarbarianName;
     string PriestName;
@@ -29,7 +33,14 @@ int main(int argc, char const *argv[]){
     Barbarian Perso2(BarbarianName);
     Priest Perso3(PriestName);
 
+    int MageSpeed = 15;
+    int BarbarianSpeed = 10;
+    int PriestSpeed = 13;
+    int Monster1Speed = rand() % 8 + 8;
+    int Monster2Speed = rand() % 8 + 8;
+    int Monster3Speed = rand() % 8 + 8;
 
+    int Ordre[6] = {MageSpeed, BarbarianSpeed, PriestSpeed, Monster1Speed, Monster2Speed, Monster3Speed};
 
     // try {
     //     srand(time(NULL));

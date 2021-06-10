@@ -1,5 +1,5 @@
-rpg : main.o Character.o Mage.o Barbarian.o exception.o potion.o Priest.o
-	g++ main.o Character.o Mage.o Barbarian.o exception.o potion.o Priest.o -o rpg
+rpg : main.o Character.o Mage.o Barbarian.o exception.o potion.o Priest.o Monster.o
+	g++ main.o Character.o Mage.o Barbarian.o exception.o potion.o Priest.o Monster.o -o rpg
 
 main.o : cpp/main.cpp
 	g++ -c cpp/main.cpp -o main.o
@@ -21,6 +21,9 @@ potion.o : cpp/potion.cpp hpp/potion.hpp
 
 Priest.o : cpp/Priest.cpp hpp/Priest.hpp
 	g++ -c cpp/Priest.cpp -o Priest.o
+
+Monster.o : cpp/Monster.cpp hpp/Monster.hpp
+	g++ -c cpp/Monster.cpp -o Monster.o
 
 clean : 
 	rm *.o

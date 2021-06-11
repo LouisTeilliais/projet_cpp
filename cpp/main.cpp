@@ -15,12 +15,11 @@
 
 using namespace std;
 
-int main(){
+string endLine1 = string("\e[1A\e[K");
 
-    srand(time(NULL));
-    // start PersoName();
+void PersoName(){
+    cout << "Bienvenue dans ce RPG ! Tout d'abord, nous allons vous demander le nom de vos personnages." << endl;
     string endLine1 = string("\e[1A\e[K");
-    cout << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << "Bienvenue dans ce RPG ! Tout d'abord, nous allons vous demander le nom de vos personnages." << endl;
     string MageName;
     string BarbarianName;
     string PriestName;
@@ -34,12 +33,9 @@ int main(){
     Mage Perso1(MageName);
     Barbarian Perso2(BarbarianName);
     Priest Perso3(PriestName);
+}
 
-    cout << endLine1 << endLine1 << endLine1 << "A présent, nous pouvons commencer." <<endl;
-    cout << "Le but du jeu est simple, vous devez choisir pour chacun de vos personnages une action à effectuer." << endl;
-    cout << "Vous pouvez soit attaquer, soit utiliser la compétence spéciale du personnage soit vous soignez si vous le pouvez encore." << endl;
-
-    sleep(15);
+void MageTurn(){
     int choice = 0;
     cout << endLine1 << endLine1 << endLine1 << endl;
     cout << "Que doit faire votre Mage ? " << endl;
@@ -47,7 +43,7 @@ int main(){
     cout << "3. Boire une potion de soin(1 restantes)" << "     " << "4. Voir les stats actuelles du Mage" << endl;
     cin >> choice;
     cout << endLine1 << endLine1 << endLine1 << endl;
-
+    
     if (choice == 1){
         cout << "1. Attaquer le monstre n°1" << "               " << "2. Attaquer le monstre n°2" << endl;
         cout << "3. Attaquer le monstre n°3" << "               " << "4. Revenir en arrière." << endl;
@@ -55,16 +51,33 @@ int main(){
         cout << "1. Attaquer le monstre n°1" << "      " << "2. Attaquer le monstre n°2" << endl;
         cout << "3. Attaquer le monstre n°3" << "      " << "4. Revenir en arrière" << endl;
     } else if (choice == 3){
-        Character drink(Perso1);
+        Character drink();
     } else if (choice == 4){
-        
+
+    } else {
+        // une erreur en gros
     }
-    // int MageSpeed = 30;
-    // int BarbarianSpeed = 10; 
-    // int PriestSpeed = 20;
-    // int Monster1Speed = rand() % 20 + 10;
-    // int Monster2Speed = rand() % 20 + 10;
-    // int Monster3Speed = rand() % 20 + 10;
+}
+
+void Start(){
+    cout << endLine1 << endLine1 << endLine1 << "A présent, nous pouvons commencer." <<endl;
+    cout << "Le but du jeu est simple, vous devez choisir pour chacun de vos personnages une action à effectuer." << endl;
+    cout << "Vous pouvez soit attaquer, soit utiliser la compétence spéciale du personnage soit vous soignez si vous le pouvez encore." << endl;
+    sleep(5);
+}
+
+
+int main(){
+
+    srand(time(NULL));
+    PersoName();
+    Start();
+
+
+
+
+
+
 
     // int Ordre[6] = {MageSpeed, BarbarianSpeed, PriestSpeed, Monster1Speed, Monster2Speed, Monster3Speed};
     // int n = sizeof(Ordre) / sizeof(Ordre[0]);

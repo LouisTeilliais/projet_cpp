@@ -55,7 +55,9 @@ int main(){
         cout << "1. Attaquer le monstre n°1" << "      " << "2. Attaquer le monstre n°2" << endl;
         cout << "3. Attaquer le monstre n°3" << "      " << "4. Revenir en arrière" << endl;
     } else if (choice == 3){
-
+        Character drink(Perso1);
+    } else if (choice == 4){
+        
     }
     // int MageSpeed = 30;
     // int BarbarianSpeed = 10; 

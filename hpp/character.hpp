@@ -2,17 +2,15 @@
 #define CHARACTER_HPP
 #include "./potion.hpp"
 #include <string>
+#include <vector>
 
 using namespace std;
 
 enum Job {
-    FreelancerJob,
+    MonsterJob,
     MageJob,
-    WarriorJob,
     BarbarianJob,
-    DruidJob,
     PriestJob,
-    PaladinJob,
 };
 
 class Character
@@ -20,8 +18,7 @@ class Character
 
     public:
     string name;
-
-    protected:
+    vector<Character*> numbersofPlayers; 
     
     int physicalAttack;
     int magicAttack;
@@ -33,7 +30,7 @@ class Character
     Job job;
 
     public:
-    Character() : Character("John Doe",FreelancerJob,100,100,50,1000){}
+    Character() : Character("John Doe",MageJob,100,100,50,1000){}
 
     Character(string name, Job job, int pAtt, int mAtt, int def, int maxHp);
 
@@ -47,9 +44,11 @@ class Character
 
     int getCurrentHp();
 
-    public:
     void receiveDamage(int damage);
     void receiveHeal(int heal);
+
+    
+    void registerPlayer();
 };
 
 #endif

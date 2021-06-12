@@ -1,23 +1,32 @@
-rpg : main.o Character.o Mage.o Barbarian.o exception.o potion.o
-	g++ main.o Character.o Mage.o Barbarian.o exception.o potion.o -o rpg
+rpg : main.o Character.o Mage.o Barbarian.o exception.o potion.o Priest.o Monster.o Start.o
+	g++ main.o Character.o Mage.o Barbarian.o exception.o potion.o Priest.o Monster.o Start.o -o rpg
 
-main.o : main.cpp
-	g++ -c main.cpp -o main.o
+main.o : cpp/main.cpp
+	g++ -c cpp/main.cpp -o main.o
 
-Character.o : Character.cpp character.hpp
-	g++ -c Character.cpp -o Character.o
+Character.o : cpp/Character.cpp hpp/character.hpp
+	g++ -c cpp/Character.cpp -o Character.o
 
-Mage.o : Mage.cpp Mage.hpp
-	g++ -c Mage.cpp -o Mage.o
+Mage.o : cpp/Mage.cpp hpp/Mage.hpp
+	g++ -c cpp/Mage.cpp -o Mage.o
 
-Barbarian.o : Barbarian.cpp Barbarian.hpp
-	g++ -c Barbarian.cpp -o Barbarian.o
+Barbarian.o : cpp/Barbarian.cpp hpp/Barbarian.hpp
+	g++ -c cpp/Barbarian.cpp -o Barbarian.o
 
-exception.o : exception.cpp exception.hpp
-	g++ -c exception.cpp -o exception.o
+exception.o : cpp/exception.cpp hpp/exception.hpp
+	g++ -c cpp/exception.cpp -o exception.o
 
-potion.o : potion.cpp potion.hpp
-	g++ -c potion.cpp -o potion.o
+potion.o : cpp/potion.cpp hpp/potion.hpp
+	g++ -c cpp/potion.cpp -o potion.o
+
+Priest.o : cpp/Priest.cpp hpp/Priest.hpp
+	g++ -c cpp/Priest.cpp -o Priest.o
+
+Monster.o : cpp/Monster.cpp hpp/Monster.hpp
+	g++ -c cpp/Monster.cpp -o Monster.o
+	
+Start.o : cpp/Start.cpp hpp/Start.hpp
+	g++ -c cpp/Start.cpp -o Start.o
 
 clean : 
 	rm *.o

@@ -260,5 +260,6 @@ bool Rpg::Alive(){
     }else if (Perso1.hp <= 0 and Perso2.hp <= 0 and Perso3.hp  <= 0){
         return false;
     }
+    return true;
 }
 

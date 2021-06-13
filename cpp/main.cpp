@@ -23,12 +23,13 @@ int main(int argc, char const *argv[]){
     srand(time(NULL));
     
     Rpg rpg;
+    rpg.Start();
+
+    rpg.PersoName();
     
     while (rpg.Alive()) {
         
-        rpg.Start();
-
-        rpg.PersoName();
+        
         
         rpg.MageTurn();
         

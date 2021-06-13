@@ -8,6 +8,7 @@
 #include "../hpp/Barbarian.hpp"
 #include "../hpp/Mage.hpp"
 #include "../hpp/Priest.hpp"
+#include "../hpp/Monster.hpp"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ Rpg::Rpg(){
 
 void Rpg::PersoName(){
 
-    cout << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << "Bienvenue dans ce RPG ! Tout d'abord, nous allons vous demander le nom de vos personnages." << endl;
+    cout << endLine1 << endLine1 << endLine1 << "Bienvenue dans ce RPG ! Tout d'abord, nous allons vous demander le nom de vos personnages." << endl;
 
     cout << "Quel est le nom de votre mage ? " << endl;
     cin >> MageName;
@@ -33,7 +34,7 @@ void Rpg::MageTurn(){
     
     int choice = 0;
     int choice2 = 0; 
-    cout << endLine1 << endLine1 << endLine1 << endl;
+    cout << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endl;
     cout << "Que doit faire votre Mage ? " << endl;
     cout << "1. Attaque simple" << "                            " << "2. Lancez une boule de feu ?" << endl;
     cout << "3. Boire une potion de soin(1 restantes)" << "     " << "4. Voir les stats actuelles du Mage" << endl;
@@ -44,13 +45,13 @@ void Rpg::MageTurn(){
             cout << "1. Attaquer le monstre n°1" << "               " << "2. Attaquer le monstre n°2" << endl;
             cout << "3. Attaquer le monstre n°3" << "               " << "4. Revenir en arrière." << endl;
             cin >> choice2;
-            if (choice2= 1){
-                // Perso1.attack(//monster1)
-            }else if (choice2 = 2){
-                // idem monstre2 
-            }else if (choice2 =  3){
-                // idem monstre3
-            }else if (choice2 = 4){
+            if (choice2== 1){
+                Perso1.attack(Monstre1);
+            }else if (choice2 == 2){
+                Perso1.attack(Monstre2);
+            }else if (choice2 ==  3){
+                Perso1.attack(Monstre3);
+            }else if (choice2 == 4){
                 Rpg::MageTurn(); 
             }else {
                 cout << "Error" << endl;
@@ -59,24 +60,93 @@ void Rpg::MageTurn(){
             cout << "1. Attaquer le monstre n°1" << "      " << "2. Attaquer le monstre n°2" << endl;
             cout << "3. Attaquer le monstre n°3" << "      " << "4. Revenir en arrière" << endl;
             cin >> choice2;
-            if (choice2= 1){
-                
-            }else if (choice2 = 2){
-                // idem monstre2 
-            }else if (choice2 =  3){
-                // idem monstre3
+            if (choice2== 1){
+                Perso1.fireball(Monstre1);
+            }else if (choice2 == 2){
+                Perso1.fireball(Monstre2);
+            }else if (choice2 ==  3){
+                Perso1.fireball(Monstre3);
             }else {
-                //revenir en arrière 
+                Rpg::MageTurn();
             }
     } else if (choice == 3){
         Character drink();
         cout << "Il ne vous reste plus de potion" << endl;
     } else if (choice == 4){
         cout << "Nom : "<< MageName <<endl;
-        cout << "Attaque "<< Perso1.physicalAttack <<endl;
+        cout << "Attaque :"<< Perso1.physicalAttack <<endl;
         cout << "Attaque magique : "<< Perso1.magicAttack <<endl;
         cout << "Défense : "<< Perso1.defense <<endl;
         cout << "HP actuel : "<< Perso1.hp <<endl;
+        sleep(5);
+        Rpg::MageTurn();
+    } else {
+        cout << "Error" << endl;
+    }
+}
+
+void Rpg::Start(){
+
+    cout << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << "A présent, nous pouvons commencer." <<endl;
+    cout << "Le but du jeu est simple, vous devez choisir pour chacun de vos personnages une action à effectuer." << endl;
+    cout << "Vous pouvez soit attaquer, soit utiliser la compétence spéciale du personnage soit vous soignez si vous le pouvez encore." << endl;
+    sleep(5);
+}
+
+void Rpg::BarbarianTurn(){
+    
+    int choice3 = 0;
+    int choice4 = 0; 
+    cout <<endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endl;
+    cout << "Que doit faire votre Barbare ? " << endl;
+    cout << "1. Attaque simple" << "                            " << "2. Entrez en mode furie ?" << endl;
+    cout << "3. Boire une potion de soin(1 restantes)" << "     " << "4. Voir les stats actuelles du Barbare" << endl;
+    cin >> choice3;
+    cout << endLine1 << endLine1 << endLine1 << endl;
+    
+    if (choice3 == 1){
+            cout << "1. Attaquer le monstre n°1" << "               " << "2. Attaquer le monstre n°2" << endl;
+            cout << "3. Attaquer le monstre n°3" << "               " << "4. Revenir en arrière." << endl;
+            cin >> choice4;
+            if (choice4 == 1){
+                Perso2.attack(Monstre1);
+            }else if (choice4 == 2){
+                Perso2.attack(Monstre2);
+            }else if (choice4 ==  3){
+                Perso2.attack(Monstre3);
+            }else if (choice4 == 4){
+                Rpg::BarbarianTurn(); 
+            }else {
+                cout << "Error" << endl;
+            }
+    } else if (choice3 == 2){
+            cout << "1. Attaquer le monstre n°1" << "      " << "2. Attaquer le monstre n°2" << endl;
+            cout << "3. Attaquer le monstre n°3" << "      " << "4. Revenir en arrière" << endl;
+            cin >> choice4;
+            if (choice4 == 1){
+                Perso2.enterFury();
+                Perso2.attack(Monstre1);
+                Perso2.leaveFury();
+            }else if (choice4 == 2){
+                Perso2.enterFury();
+                Perso2.attack(Monstre2);
+                Perso2.leaveFury();
+            }else if (choice4 == 3){
+                Perso2.enterFury();
+                Perso2.attack(Monstre3);
+                Perso2.leaveFury();
+            }else {
+                Rpg::MageTurn();
+            }
+    } else if (choice3 == 3){
+        Character drink();
+        cout << "Il ne vous reste plus de potion" << endl;
+    } else if (choice3 == 4){
+        cout << "Nom : "<< BarbarianName <<endl;
+        cout << "Attaque "<< Perso2.physicalAttack <<endl;
+        cout << "Attaque magique : "<< Perso2.magicAttack <<endl;
+        cout << "Défense : "<< Perso2.defense <<endl;
+        cout << "HP actuel : "<< Perso2.hp <<endl;
     } else {
         cout << "Error" << endl;
     }
@@ -84,47 +154,47 @@ void Rpg::MageTurn(){
 
 void Rpg::PriestTurn(){
     
-    int choice = 0;
-    int choice2 = 0; 
-    cout << endLine1 << endLine1 << endLine1 << endl;
+    int choice5 = 0;
+    int choice6 = 0; 
+    cout <<endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endl;
     cout << "Que doit faire votre Prêtre ? " << endl;
     cout << "1. Attaque simple" << "                            " << "2. Soignez un allié ?" << endl;
     cout << "3. Boire une potion de soin(1 restantes)" << "     " << "4. Voir les stats actuelles du Prêtre" << endl;
-    cin >> choice;
+    cin >> choice5;
     cout << endLine1 << endLine1 << endLine1 << endl;
     
-    if (choice == 1){
+    if (choice5 == 1){
             cout << "1. Attaquer le monstre n°1" << "               " << "2. Attaquer le monstre n°2" << endl;
             cout << "3. Attaquer le monstre n°3" << "               " << "4. Revenir en arrière." << endl;
-            cin >> choice2;
-            if (choice2= 1){
+            cin >> choice6;
+            if (choice6== 1){
                 Perso3.attack(Monstre1);
-            }else if (choice2 = 2){
+            }else if (choice6 == 2){
                 Perso3.attack(Monstre2);
-            }else if (choice2 =  3){
+            }else if (choice6 ==  3){
                 Perso3.attack(Monstre3);
-            }else if (choice2 = 4){
+            }else if (choice6 == 4){
                 Rpg::PriestTurn(); 
             }else {
                 cout << "Error" << endl;
             }
-    } else if (choice == 2){
+    } else if (choice5 == 2){
             cout << "1. Soignez le Mage"     << "      " << "2. Soignez le Barbare" << endl;
             cout << "3. Se soignez soi-même" << "      " << "4. Revenir en arrière" << endl;
-            cin >> choice2;
-            if (choice2= 1){
+            cin >> choice6;
+            if (choice6== 1){
                 Perso3.magicHeal(Perso1);
-            }else if (choice2 = 2){
+            }else if (choice6 == 2){
                 Perso3.magicHeal(Perso2);
-            }else if (choice2 =  3){
+            }else if (choice6 ==  3){
                 Perso3.magicHeal(Perso3);
             }else {
                 Rpg::PriestTurn();
             }
-    } else if (choice == 3){
+    } else if (choice5 == 3){
         Character drink();
         cout << "Il ne vous reste plus de potion" << endl;
-    } else if (choice == 4){
+    } else if (choice5 == 4){
         cout << "Nom : "<< PriestName <<endl;
         cout << "Attaque "<< Perso3.physicalAttack <<endl;
         cout << "Attaque magique : "<< Perso3.magicAttack <<endl;
@@ -135,10 +205,70 @@ void Rpg::PriestTurn(){
     }
 }
 
-void Rpg::Start(){
+void Rpg::MonsterTurn(Monster& monster, Character& persoSimpleAttck, Character& perso2ForZoneAttck, Character& perso3ForZoneAttck) {
+    
+    int randomAction = rand() % 3;
+    
+    if (randomAction == 0){
+        monster.simpleAttack(persoSimpleAttck);
+    } else if (randomAction == 1){
+        monster.zoneAttack(persoSimpleAttck);
+        monster.zoneAttack(perso2ForZoneAttck);
+        monster.zoneAttack(perso3ForZoneAttck);
+    } else {
+        monster.healMonster(monster);
+    }
+}
 
-    cout << endLine1 << endLine1 << endLine1 << "A présent, nous pouvons commencer." <<endl;
-    cout << "Le but du jeu est simple, vous devez choisir pour chacun de vos personnages une action à effectuer." << endl;
-    cout << "Vous pouvez soit attaquer, soit utiliser la compétence spéciale du personnage soit vous soignez si vous le pouvez encore." << endl;
-    sleep(5);
+void Rpg::CallMonsterTurn(){
+    
+    int randomEnemies = rand() % 3;
+    if (randomEnemies == 0){
+        MonsterTurn(Monstre1, Perso1, Perso2, Perso3);
+    } else if ( randomEnemies == 1){
+        MonsterTurn(Monstre1, Perso2, Perso3, Perso1);
+    } else if ( randomEnemies == 2){
+        MonsterTurn(Monstre1, Perso3, Perso1, Perso2);
+    }
+    // Fin de son tour
+    // Tour du 2nd monstre
+    int randomEnemies2 = rand() % 3;
+    if (randomEnemies2 == 0){
+        MonsterTurn(Monstre2, Perso1, Perso2, Perso3);
+    } else if ( randomEnemies2 == 1){
+        MonsterTurn(Monstre2, Perso2, Perso3, Perso1);
+    } else if ( randomEnemies2 == 2){
+        MonsterTurn(Monstre2, Perso3, Perso1, Perso2);
+    }
+    // Fin de son tour
+    // Tour du 3ème monstre
+    int randomEnemies3 = rand() % 3;
+    if (randomEnemies3 == 0){
+        MonsterTurn(Monstre3, Perso1, Perso2, Perso3);
+    } else if ( randomEnemies3 == 1){
+        MonsterTurn(Monstre3, Perso2, Perso3, Perso1);
+    } else if ( randomEnemies3 == 2){
+        MonsterTurn(Monstre3, Perso3, Perso1, Perso2);
+    }
+}
+
+
+bool Rpg::Alive(){
+
+    if (Monstre1.hp <= 0 and Monstre2.hp <= 0 and Monstre3.hp <= 0){
+        return false;
+    }else if (Perso1.hp <= 0 and Perso2.hp <= 0 and Perso3.hp  <= 0){
+        return false;
+    }
+    return true;
+}
+
+void Rpg::DisplayHP(){
+    cout << MageName << " a " << Perso1.hp << "Pv." << endl;
+    cout << BarbarianName << " a " << Perso2.hp << "Pv." << endl;
+    cout << PriestName << " a " << Perso3.hp << "Pv." << endl;
+    cout << "Le monstre 1 a " << Monstre1.hp << "Pv." << endl;
+    cout << "Le monstre 2 a " << Monstre2.hp << "Pv." << endl;
+    cout << "Le monstre 3 a " << Monstre3.hp << "Pv." << endl;
+    sleep(30);
 }

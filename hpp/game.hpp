@@ -3,6 +3,7 @@
 #include "Barbarian.hpp"
 #include "Mage.hpp"
 #include "Priest.hpp"
+#include "Monster.hpp"
 #include <iostream>
 #include <ostream>
 #include <iterator>
@@ -15,6 +16,9 @@ class Rpg {
 
     Rpg();
 
+    // Début Partie
+    void Start();
+
     // Demande nom des persos
 
     void PersoName();
@@ -26,15 +30,31 @@ class Rpg {
     Barbarian Perso2 = Barbarian(BarbarianName);
     Priest Perso3 = Priest(PriestName);
 
-    // tour du mage
+    // Tour du Mage
     void MageTurn();
 
-    // début game
+    // Tour du Barbare 
 
-    void Start();
+    void BarbarianTurn();
 
+    // Tour du Priest 
 
     void PriestTurn();
+
+    // Tour du Monstre 
+
+    void MonsterTurn(Monster& monster, Character& persoSimpleAttck, Character& perso2ForZoneAttck, Character& perso3ForZoneAttck);
+    
+    Monster Monstre1 = Monster("Monstre1");
+    Monster Monstre2 = Monster("Monstre2");
+    Monster Monstre3 = Monster("Monstre3");
+
+
+    void CallMonsterTurn();
+
+    bool Alive();
+
+    void DisplayHP();
 };
 
 

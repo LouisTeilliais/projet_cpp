@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 ![image](readmetools/306px-ISO_C++_Logo.svg.png)
 
 # Projet RPG

@@ -19,18 +19,3 @@ void Monster::zoneAttack(Character& enemies){
 void Monster::healMonster(Character& monsters){
     monsters.defense += 20;
 }
-
-// void Monster::random(Character& monsters, Character& enemies){
-    
-//     int random = rand() % 3;
-
-//     if (random = 0){
-//         simpleAttack(enemies);
-
-//     }else if (random = 1){
-//         healMonster(monsters);
-
-//     }else {
-//         zoneAttack(enemies);
-//     }
-// }

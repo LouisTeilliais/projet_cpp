@@ -13,10 +13,9 @@ class Barbarian : public Character {
     bool inFury;
 
     public:
-    Barbarian(string name);
+    Barbarian(string name) : Character(name,Job::BarbarianJob,75,0,20,280){};
     void enterFury();
     void leaveFury();
 };
-
 
 #endif

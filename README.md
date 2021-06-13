@@ -1,4 +1,4 @@
-![image](306px-ISO_C++_Logo.svg)
+
 # Projet RPG
 ---
 ## Présentation du sujet 

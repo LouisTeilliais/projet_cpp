@@ -1,6 +1,6 @@
 #include "../hpp/Barbarian.hpp"
 
-Barbarian::Barbarian(string name) : Character(name,Job::BarbarianJob,200,0,15,900) {
+Barbarian::Barbarian(string name) : Character(name,Job::BarbarianJob,75,0,20,280){
     baseAttack = this->physicalAttack;
     baseDefense = this->defense;
     inFury = false;

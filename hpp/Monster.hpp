@@ -9,8 +9,7 @@ class Monster : public Character {
     int numberAdverse = numbersofPlayers.size();
 
     public:
-    Monster(string name) : Character(name, Job::MonsterJob, 250,0,20,1000){};
-    
+    Monster(string name) : Character(name, Job::MonsterJob, 50,0,15,300){};
     void simpleAttack(Character& enemies);
         
     void zoneAttack(Character& enemies);

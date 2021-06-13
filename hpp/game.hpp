@@ -56,7 +56,7 @@ class Rpg {
 
     void DisplayHP();
 
-    void test();
+    
 };
 
 

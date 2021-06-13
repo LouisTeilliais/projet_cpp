@@ -11,7 +11,6 @@
 #include "../hpp/exception.hpp"
 #include "../hpp/Priest.hpp"
 #include "../hpp/Monster.hpp"
-#include "../hpp/Start.hpp"
 #include "../hpp/game.hpp"
 
 

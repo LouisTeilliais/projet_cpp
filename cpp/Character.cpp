@@ -50,17 +50,3 @@ void Character::receiveDamage(int damage){
         this->hp -= damage;
     }
 }
-
-
-
-// void Character::receiveHeal(int heal){
-//     if(heal < 0) {
-//         heal = 0;
-//     }
-//     if(this->hp + heal < 0){
-//         this->hp = 0;
-//     }
-//     else {
-//         this->hp += heal;
-//     }
-// }

@@ -156,7 +156,7 @@ void Rpg::PriestTurn(){
     
     int choice5 = 0;
     int choice6 = 0; 
-    cout <<endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endl;
+    cout <<endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endl;
     cout << "Que doit faire votre Prêtre ? " << endl;
     cout << "1. Attaque simple" << "                            " << "2. Soignez un allié ?" << endl;
     cout << "3. Boire une potion de soin(1 restantes)" << "     " << "4. Voir les stats actuelles du Prêtre" << endl;

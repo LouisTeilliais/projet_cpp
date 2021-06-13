@@ -11,7 +11,7 @@ class Priest : public Character {
     bool tryUsingMp(int magicPoint);
 
     public:
-    Priest(string name) : Character(name, Job::PriestJob, 25,200,30,1000), magicPoint(100), maxMagicPoint(150){};
+    Priest(string name) : Character(name, Job::PriestJob, 35,15,35,150), magicPoint(100), maxMagicPoint(150){};
     void magicHeal(Character& other);
 
 };

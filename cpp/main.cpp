@@ -18,23 +18,6 @@ using namespace std;
 
 string endLine1 = string("\e[1A\e[K");
 
-string PersoName(){
-    cout << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << "Bienvenue dans ce RPG ! Tout d'abord, nous allons vous demander le nom de vos personnages." << endl;
-    string endLine1 = string("\e[1A\e[K");
-    string MageName;
-    string BarbarianName;
-    string PriestName;
-    cout << "Quel est le nom de votre mage ? " << endl;
-    cin >> MageName;
-    cout << endLine1 << endLine1 << "Quel est le nom de votre Barbare ? " << endl;
-    cin >> BarbarianName;
-    cout << endLine1 << endLine1 << "Quel est le nom de votre Prêtre ? " << endl;
-    cin >> PriestName;
-    
-    return MageName, BarbarianName, PriestName;
-
-}
-
 void MageTurn(){
     int choice = 0;
     cout << endLine1 << endLine1 << endLine1 << endl;
@@ -66,51 +49,78 @@ void Start(){
     sleep(5);
 }
 
-void MonsterTurn(Monster& monster) {
+void MonsterTurn(Monster& monster, Character& persoSimpleAttck, Character& perso2ForZoneAttck, Character& perso3ForZoneAttck) {
     int randomAction = rand() % 3;
-    int randomEnemies = rand() % 3;
-
-    if (randomAction = 0){
-        
-        if(randomEnemies = 0){
-            monster.simpleAttack();
-        }else if (randomEnemies = 1){
-            monster.simpleAttack(Perso2);
-        }else {
-            monster.simpleAttack(Perso3);
-        }
-    }else if (randomAction = 1){
-        
-        if(randomEnemies = 0){
-            monster.simpleAttack(Perso1);
-        }else if (randomEnemies = 1){
-            monster.simpleAttack(Perso2);
-        }else {
-            monster.simpleAttack(Perso3);
-        }
+    if (randomAction == 0){
+        monster.simpleAttack(persoSimpleAttck);
+    } else if (randomAction == 1){
+        monster.zoneAttack(persoSimpleAttck);
+        monster.zoneAttack(perso2ForZoneAttck);
+        monster.zoneAttack(perso3ForZoneAttck);
+    } else {
+        monster.healMonster(monster);
     }
 }
 
 int main(){
 
     srand(time(NULL));
-    PersoName();
+    // Début du jeu avec demande des noms pour le joueur
+    cout << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << "Bienvenue dans ce RPG ! Tout d'abord, nous allons vous demander le nom de vos personnages." << endl;
+    string endLine1 = string("\e[1A\e[K");
+    string MageName;
+    string BarbarianName;
+    string PriestName;
+    cout << "Quel est le nom de votre mage ? " << endl;
+    cin >> MageName;
+    cout << endLine1 << endLine1 << "Quel est le nom de votre Barbare ? " << endl;
+    cin >> BarbarianName;
+    cout << endLine1 << endLine1 << "Quel est le nom de votre Prêtre ? " << endl;
+    cin >> PriestName;
+    // Création des personnages
     Mage Perso1(MageName);
     Barbarian Perso2(BarbarianName);
     Priest Perso3(PriestName);
-    Start();
-
-    // int Ordre[6] = {MageSpeed, BarbarianSpeed, PriestSpeed, Monster1Speed, Monster2Speed, Monster3Speed};
-    // int n = sizeof(Ordre) / sizeof(Ordre[0]);
-    // sort(Ordre, Ordre + n);
-    // for (int i = 0; i < n; ++i){
-    //     cout << Ordre[i] << endl;
-    // }
-    Mage Perso1(Magename);
     Monster Monstre1("Monstre 1");
     Monster Monstre2("Monstre 2");
-    Monster Monstre2("Monstre 3");
+    Monster Monstre3("Monstre 3");
+    // Explication du jeu
+    Start();
+    // Tour du Mage
+    MageTurn();
 
+    // Tour du 1er monstre
+    int randomEnemies = rand() % 3;
+    if (randomEnemies = 0){
+        MonsterTurn(Monstre1, Perso1, Perso2, Perso3);
+    } else if ( randomEnemies == 1){
+        MonsterTurn(Monstre1, Perso2, Perso3, Perso1);
+    } else if ( randomEnemies == 2){
+        MonsterTurn(Monstre1, Perso3, Perso1, Perso2);
+    }
+    // Fin de son tour
+    // Tour du 2nd monstre
+    int randomEnemies2 = rand() % 3;
+    if (randomEnemies2 = 0){
+        MonsterTurn(Monstre2, Perso1, Perso2, Perso3);
+    } else if ( randomEnemies2 == 1){
+        MonsterTurn(Monstre2, Perso2, Perso3, Perso1);
+    } else if ( randomEnemies2 == 2){
+        MonsterTurn(Monstre2, Perso3, Perso1, Perso2);
+    }
+    // Fin de son tour
+    // Tour du 3ème monstre
+    int randomEnemies3 = rand() % 3;
+    if (randomEnemies3 = 0){
+        MonsterTurn(Monstre3, Perso1, Perso2, Perso3);
+    } else if ( randomEnemies3 == 1){
+        MonsterTurn(Monstre3, Perso2, Perso3, Perso1);
+    } else if ( randomEnemies3 == 2){
+        MonsterTurn(Monstre3, Perso3, Perso1, Perso2);
+    }
+    // Fin de son tour
+
+    cout << Perso1.hp << ", " << Perso2.hp << ", " << Perso3.hp << endl;
 
     return 0;
 }

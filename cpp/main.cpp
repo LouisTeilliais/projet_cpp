@@ -38,6 +38,8 @@ int main(int argc, char const *argv[]){
         rpg.BarbarianTurn();
 
         rpg.CallMonsterTurn();
+
+        rpg.DisplayHP();
     }
 
     return 0;

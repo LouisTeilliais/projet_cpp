@@ -53,6 +53,8 @@ class Rpg {
     void CallMonsterTurn();
 
     bool Alive();
+
+    void DisplayHP();
 };
 
 

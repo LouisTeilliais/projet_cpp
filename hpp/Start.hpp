@@ -12,6 +12,7 @@
 using namespace std;
 
 class start {
+    public :
     string endLine1 = string("\e[1A\e[K");
     void PersoName();
     void Start();

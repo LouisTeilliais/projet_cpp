@@ -24,19 +24,20 @@ int main(int argc, char const *argv[]){
     
     Rpg rpg;
     
-    rpg.Start();
+    while (rpg.Alive()) {
+        
+        rpg.Start();
 
-    rpg.PersoName();
-    
-    rpg.MageTurn();
-    sleep(5);
-    rpg.PriestTurn();
+        rpg.PersoName();
+        
+        rpg.MageTurn();
+        
+        rpg.PriestTurn();
 
-    rpg.BarbarianTurn();
+        rpg.BarbarianTurn();
 
-    rpg.CallMonsterTurn();
-    
-    
+        rpg.CallMonsterTurn();
+    }
 
     return 0;
 }

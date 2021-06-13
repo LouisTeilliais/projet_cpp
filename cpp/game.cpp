@@ -252,3 +252,13 @@ void Rpg::CallMonsterTurn(){
     }
 }
 
+
+bool Rpg::Alive(){
+
+    if (Monstre1.hp <= 0 and Monstre2.hp <= 0 and Monstre3.hp <= 0){
+        return false;
+    }else if (Perso1.hp <= 0 and Perso2.hp <= 0 and Perso3.hp  <= 0){
+        return false;
+    }
+}
+

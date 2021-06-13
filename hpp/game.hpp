@@ -51,6 +51,8 @@ class Rpg {
 
 
     void CallMonsterTurn();
+
+    bool Alive();
 };
 
 

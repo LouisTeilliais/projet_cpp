@@ -1,8 +1,6 @@
 <<<<<<< HEAD
 ![image](readmetools/306px-ISO_C++_Logo.svg.png)
 
-=======
->>>>>>> 91937842eb223cd73e2b19a33ddece6bd02bcc72
 # Projet RPG
 
 ## Présentation du sujet 

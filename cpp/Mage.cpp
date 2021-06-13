@@ -18,3 +18,4 @@ void Mage::fireball(Character& other){
     }
     other.receiveDamage(this->magicAttack);
 }
+

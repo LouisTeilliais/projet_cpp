@@ -10,6 +10,7 @@
 #include "../hpp/potion.hpp"
 #include "../hpp/exception.hpp"
 #include "../hpp/Priest.hpp"
+#include "../hpp/Monster.hpp"
 #include "../hpp/Start.hpp"
 
 
@@ -17,8 +18,8 @@ using namespace std;
 
 string endLine1 = string("\e[1A\e[K");
 
-void PersoName(){
-    cout << "Bienvenue dans ce RPG ! Tout d'abord, nous allons vous demander le nom de vos personnages." << endl;
+string PersoName(){
+    cout << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << endLine1 << "Bienvenue dans ce RPG ! Tout d'abord, nous allons vous demander le nom de vos personnages." << endl;
     string endLine1 = string("\e[1A\e[K");
     string MageName;
     string BarbarianName;
@@ -29,10 +30,9 @@ void PersoName(){
     cin >> BarbarianName;
     cout << endLine1 << endLine1 << "Quel est le nom de votre Prêtre ? " << endl;
     cin >> PriestName;
+    
+    return MageName, BarbarianName, PriestName;
 
-    Mage Perso1(MageName);
-    Barbarian Perso2(BarbarianName);
-    Priest Perso3(PriestName);
 }
 
 void MageTurn(){
@@ -66,18 +66,39 @@ void Start(){
     sleep(5);
 }
 
+void MonsterTurn(Monster& monster) {
+    int randomAction = rand() % 3;
+    int randomEnemies = rand() % 3;
+
+    if (randomAction = 0){
+        
+        if(randomEnemies = 0){
+            monster.simpleAttack();
+        }else if (randomEnemies = 1){
+            monster.simpleAttack(Perso2);
+        }else {
+            monster.simpleAttack(Perso3);
+        }
+    }else if (randomAction = 1){
+        
+        if(randomEnemies = 0){
+            monster.simpleAttack(Perso1);
+        }else if (randomEnemies = 1){
+            monster.simpleAttack(Perso2);
+        }else {
+            monster.simpleAttack(Perso3);
+        }
+    }
+}
 
 int main(){
 
     srand(time(NULL));
     PersoName();
+    Mage Perso1(MageName);
+    Barbarian Perso2(BarbarianName);
+    Priest Perso3(PriestName);
     Start();
-
-
-
-
-
-
 
     // int Ordre[6] = {MageSpeed, BarbarianSpeed, PriestSpeed, Monster1Speed, Monster2Speed, Monster3Speed};
     // int n = sizeof(Ordre) / sizeof(Ordre[0]);
@@ -85,43 +106,10 @@ int main(){
     // for (int i = 0; i < n; ++i){
     //     cout << Ordre[i] << endl;
     // }
-
-
-
-
-
-
-    // try {
-    //     srand(time(NULL));
-    //     Mage gandalf("Gandalf");
-    //     Barbarian conan("Conan");
-    //     conan.enterFury();
-    //     conan.attack(gandalf);
-
-    //     conan.attack(gandalf);
-    //     cout << "Gandalf a " << gandalf.getCurrentHp() << " PV" << endl;
-    //     conan.enterFury();
-
-    //     Potion small(3,100);
-    
-    //     gandalf += small;
-    //     gandalf += small;
-    //     gandalf += small;
-    //     gandalf += small;
-    //     cout << "All potions were drunk !" << endl;
-    // }
-    // catch(IllegalFury& illegalF){
-    //     cout << "An illegal barbarian fury operation occured : " << illegalF.what() << endl;
-    // }
-    // catch(EmptyPotion& ep){
-    //     cout << "An illegal barbarian fury operation occured : " << ep.what() << endl;
-    // }
-    // catch(std::exception& e){
-    //     cout << "An exception occured : " << e.what() << endl;
-    // }
-
-    // cout << "End of combat" << endl;
-
+    Mage Perso1(Magename);
+    Monster Monstre1("Monstre 1");
+    Monster Monstre2("Monstre 2");
+    Monster Monstre2("Monstre 3");
 
 
     return 0;

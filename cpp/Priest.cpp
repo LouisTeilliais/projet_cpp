@@ -21,5 +21,5 @@ void Priest::magicHeal(Character& other){
     int randomHeal = rand() % magicAttack + magicAttack ;
     
     
-    other.receiveHeal(this->magicAttack);
+    other.heal(randomHeal);
 }

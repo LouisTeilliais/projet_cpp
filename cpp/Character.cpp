@@ -8,6 +8,7 @@ Character::Character(string name, Job job, int pAtt, int mAtt, int def, int maxH
     this->defense = def;
     this->maxHp = maxHp;
     this->hp = maxHp;
+    numbersofPlayers.push_back(this);
 }
 
 
@@ -50,14 +51,16 @@ void Character::receiveDamage(int damage){
     }
 }
 
-void Character::receiveHeal(int heal){
-    if(heal < 0) {
-        heal = 0;
-    }
-    if(this->hp + heal < 0){
-        this->hp = 0;
-    }
-    else {
-        this->hp += heal;
-    }
-}
+
+
+// void Character::receiveHeal(int heal){
+//     if(heal < 0) {
+//         heal = 0;
+//     }
+//     if(this->hp + heal < 0){
+//         this->hp = 0;
+//     }
+//     else {
+//         this->hp += heal;
+//     }
+// }

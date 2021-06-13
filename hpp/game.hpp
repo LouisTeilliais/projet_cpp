@@ -55,6 +55,8 @@ class Rpg {
     bool Alive();
 
     void DisplayHP();
+
+    void test();
 };
 
 

@@ -29,14 +29,12 @@ int main(int argc, char const *argv[]){
     
     while (rpg.Alive()) {
         
-        
-        
         rpg.MageTurn();
         
-        rpg.PriestTurn();
-
         rpg.BarbarianTurn();
-
+        
+        rpg.PriestTurn();
+        
         rpg.CallMonsterTurn();
 
         rpg.DisplayHP();

@@ -15,6 +15,8 @@ class Mage : public Character {
     public:
     Mage(string name) : Character(name,Job::MageJob,15,200,30,1000), maxMp(100), mp(100){}
     void fireball(Character& other);
+
+    
 };
 
 #endif
